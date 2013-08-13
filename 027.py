@@ -22,17 +22,26 @@ class Quad:
         return count  
 
 print(datetime.now().time())
+
 prime3.prime_gen(1000)
+fixed_prime_list = list(prime3.prime_list)
 record = 0
 record_holder = 0
+
+def inner_loop(a, b):
+    q = Quad(a, b)
+    c = q.consecutive_primes()
+    global record, record_holder
+    if c > record:
+        record = c
+        record_holder = q.prod_of_coefficients()
+    
+
 for a in range(-1000, 1000+1):
-    for b in range(-1000, 1000+1):
-        q = Quad(a, b)
-        c = q.consecutive_primes()
-        if c > record:
-            record = c
-            record_holder = q.prod_of_coefficients()
-            
+    for prime in fixed_prime_list:
+        inner_loop(a, prime)
+        inner_loop(a, -prime)
+
 
 answer = record_holder
 
