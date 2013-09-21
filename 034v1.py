@@ -1,6 +1,6 @@
 #!C:\Python33\python.exe
 #https://projecteuler.net/problem=34
-from math import factorial, log#, floor
+from math import factorial, log
 from functools import lru_cache
 
 sum_curious_numbers = 0
